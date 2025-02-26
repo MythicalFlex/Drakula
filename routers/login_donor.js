@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
 
         req.session.user = user; // Store user in session
         console.log(user)
-        res.redirect("/dashboard");
+        res.redirect("/dashboard-donor");
     });
 });
 

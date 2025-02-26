@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login");
     }
-    res.render("dashboard", { user: req.session.user });
+    res.render("dashboard_donor", { user: req.session.user });
 });
 
 // Handle logout
@@ -21,7 +21,7 @@ router.get("/logout", (req, res) => {
         if (err) {
             console.error("Logout error:", err);
         }
-        res.redirect("/login");
+        res.redirect("/login-donor");
     });
 });
 
