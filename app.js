@@ -23,7 +23,7 @@ const loginDonorRouter = require("./routers/login_donor");
 const signupBankRouter = require("./routers/signup_bank");
 const signupDonorRouter = require("./routers/signup_donor");
 const dashboardDonorRouter = require("./routers/dashboard_donor");
-
+const dashboardBankRouter = require("./routers/dashboard_bank");
 
 app.use('/', homeRouter);
 app.use('/find-donor', findRouter);
@@ -32,6 +32,7 @@ app.use('/login-donor', loginDonorRouter);
 app.use('/signup-bank', signupBankRouter);
 app.use('/signup-donor', signupDonorRouter);
 app.use('/dashboard-donor', dashboardDonorRouter);
+app.use('/dashboard-bank', dashboardBankRouter);
 
 
 app.listen(PORT, () => {
