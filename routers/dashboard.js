@@ -8,20 +8,21 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err) =
     if (err) console.error("Database connection failed:", err);
 });
 
-// Render donor dashboard
-router.get("/dashboard/:donor_id", (req, res) => {
-    const donorId = req.params.donor_id;
+router.get("/", (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login");
+    }
+    res.render("dashboard", { user: req.session.user });
+});
 
-    // Fetch donor details
-    const query = "SELECT * FROM donors WHERE donor_id = ?";
-    db.get(query, [donorId], (err, donor) => {
-        if (err || !donor) {
-            console.error(err);
-            return res.status(404).send("Donor not found");
-        }
-
-        res.render("dashboard", { donor });
-    });
+// Handle logout
+router.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Logout error:", err);
+        }
+        res.redirect("/login");
+    });
 });
 
 module.exports = router;

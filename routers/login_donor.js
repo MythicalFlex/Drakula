@@ -10,27 +10,26 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err) =
 
 // Render login page
 router.get("/", (req, res) => {
-    res.render("login_donor", { message: null });
+    res.render("login_donor", { error: null });
 });
 
-// Handle login form submission
 router.post("/", (req, res) => {
-    const { contact } = req.body;
+    const { username, password } = req.body;
 
-    // Check if donor exists
-    const query = "SELECT donor_id, name FROM donors WHERE contact = ?";
-    db.get(query, [contact], (err, donor) => {
-        if (err) {
-            console.error(err);
-            return res.render("login_donor", { message: "Database error. Please try again." });
-        }
-        if (!donor) {
-            return res.render("login_donor", { message: "Donor not found. Please check your contact number." });
-        }
+    const query = "SELECT * FROM BloodDonor WHERE username = ? AND password = ?";
+    db.get(query, [username, password], (err, user) => {
+        if (err) {
+            console.error("Database error:", err.message);
+            return res.render("login_donor", { error: "An error occurred. Please try again." });
+        }
+        if (!user) {
+            return res.render("login_donor", { error: "Invalid username or password." });
+        }
 
-        // Successful login → Redirect to donor dashboard with donor_id
-        res.redirect(`/dashboard/${donor.donor_id}`);
-    });
+        req.session.user = user; // Store user in session
+        console.log(user)
+        res.redirect("/dashboard");
+    });
 });
 
 module.exports = router;

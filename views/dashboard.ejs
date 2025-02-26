@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
-
-    <h1>Welcome, <%= donor.name %>!</h1>
-
-    <p><strong>Donor ID:</strong> <%= donor.donor_id %></p>
-    <p><strong>Blood Group:</strong> <%= donor.blood_group %></p>
-    <p><strong>Age:</strong> <%= donor.age %></p>
-    <p><strong>Gender:</strong> <%= donor.gender %></p>
-    <p><strong>Last Donation Date:</strong> <%= donor.last_donation_date || "N/A" %></p>
-
-    <nav>
+    <nav>
         <a href="/">Home</a> |
-        <a href="/find-donor/">Find Donor</a> |
-        <a href="/logout">Logout</a>
+        <a href="/find-donor">Find Donor</a> |
+        <a href="/signup-donor">Sign Up Donor</a> |
+        <a href="/signup-bank">Sign Up Bank</a> |
+        <a href="/login-donor">Login Donor</a> |
+        <a href="/login-bank">Login Bank</a>
     </nav>
 
+
+    <h2>Welcome, <%= user.name %>!</h2>
+    <p>Blood Type: <%= user.blood_type %></p>
+    <p>Contact: <%= user.contact %></p>
+    <p>Location: <%= user.area %>, <%= user.city %>, <%= user.state %></p>
+    <p>Last Donation Date: <%= user.last_donation_date ? user.last_donation_date : "Not provided" %></p>
+    <p>Health Status: <%= user.health_status ? user.health_status : "Not provided" %></p>
+    <a href="/logout">Logout</a>
 </body>
 </html>
