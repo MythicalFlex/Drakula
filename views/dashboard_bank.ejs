@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Dashboard</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/find-donor">Find Donor</a> |
+        <a href="/signup-donor">Sign Up Donor</a> |
+        <a href="/signup-bank">Sign Up Bank</a> |
+        <a href="/login-donor">Login Donor</a> |
+        <a href="/login-bank">Login Bank</a> |
+        <a href="/dashboard-bank/logout">Logout</a>
+    </nav>
+
+    <h2>Welcome, <%= user.name %>!</h2>
+    <p>Contact: <%= user.contact %></p>
+    <p>Location: <%= user.area %>, <%= user.city %>, <%= user.state %></p>
+
+    <h3>Blood Inventory</h3>
+    <% if (user.inventory.length > 0) { %>
+        <table border="1">
+            <tr>
+                <th>Blood Type</th>
+                <th>Units Available</th>
+            </tr>
+            <% user.inventory.forEach(item => { %>
+                <tr>
+                    <td><%= item.blood_type %></td>
+                    <td><%= item.units_available %></td>
+                </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p>No blood inventory available.</p>
+    <% } %>
+
+</body>
+</html>

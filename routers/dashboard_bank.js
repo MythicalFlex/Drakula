@@ -5,14 +5,18 @@ const router = express.Router();
 
 // Connect to SQLite database
 const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err) => {
-    if (err) console.error("Database connection failed:", err);
+    if (err) console.error("Database connection failed:", err);
 });
 
 router.get("/", (req, res) => {
     if (!req.session.user) {
-        return res.redirect("/login");
+        return res.redirect("/login-bank");
     }
-    res.render("dashboard_bank", { user: req.session.user });
+
+    const bank = req.session.user; // Get bank details from session
+    console.log("Dashboard loaded for:", bank); // Debugging log
+
+    res.render("dashboard_bank", { user: bank, inventory: bank.inventory });
 });
 
 // Handle logout
