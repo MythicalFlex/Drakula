@@ -1,104 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Blood Bank</title>
 </head>
 <body>
-    <h1>SIGN UP</h1>
 
-    <nav>
-        <a href="/">Home Page</a>
-        <a href="/find-donor/">Find Donor</a>
-        <a href="/signup/">Sign Up</a>
-        <a href="/login/">Login</a>
-    </nav>
+    <h1>Blood Bank Sign Up</h1>
 
-    <h2>Blood Donor Sign Up</h2>
-    <form action="/signup/donor" method="POST">
-        <label for="donor-name">Full Name:</label>
-        <input type="text" id="donor-name" name="full_name" required><br><br>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/find-donor">Find Donor</a> |
+        <a href="/signup-donor">Sign Up Donor</a> |
+        <a href="/signup-bank">Sign Up Bank</a> |
+        <a href="/login-donor">Login Donor</a> |
+        <a href="/login-bank">Login Bank</a>
+    </nav>
 
-        <label for="donor-age">Age:</label>
-        <input type="number" id="donor-age" name="age" min="18" max="65" required><br><br>
+    <% if (message) { %>
+        <p><strong><%= message %></strong></p>
+    <% } %>
 
-        <label for="donor-weight">Weight (kg):</label>
-        <input type="number" id="donor-weight" name="weight" min="50" required><br><br>
+    <h2>Register as a Blood Bank</h2>
 
-        <label for="blood-type">Blood Type:</label>
-        <select id="blood-type" name="blood_type" required>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-        </select><br><br>
+    <form action="/signup-bank" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
 
-        <label for="contact">Contact Number:</label>
-        <input type="text" id="contact" name="contact_number" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
 
-        <label for="area">Area:</label>
-        <input type="text" id="area" name="area" required><br><br>
+        <label for="name">Blood Bank Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
 
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" required><br><br>
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" required>
+        <br><br>
 
-        <label for="state">State:</label>
-        <input type="text" id="state" name="state" required><br><br>
+        <label for="area">Area:</label>
+        <input type="text" id="area" name="area" required>
+        <br><br>
 
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="country" required><br><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        <br><br>
 
-        <label for="last-donation">Last Donation Date:</label>
-        <input type="date" id="last-donation" name="last_donation_date"><br><br>
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+        <br><br>
 
-        <button type="submit">Sign Up as Donor</button>
-    </form>
-
-    <h2>Blood Bank Sign Up</h2>
-    <form action="/signup/bloodbank" method="POST">
-        <label for="bank-name">Blood Bank Name:</label>
-        <input type="text" id="bank-name" name="bank_name" required><br><br>
-
-        <label for="bank-city">City:</label>
-        <input type="text" id="bank-city" name="city" required><br><br>
-
-        <label for="bank-state">State:</label>
-        <input type="text" id="bank-state" name="state" required><br><br>
-
-        <label for="bank-country">Country:</label>
-        <input type="text" id="bank-country" name="country" required><br><br>
-
-        <label for="a-pos">A+ Units:</label>
-        <input type="number" id="a-pos" name="A_pos" min="0" required><br><br>
-
-        <label for="a-neg">A- Units:</label>
-        <input type="number" id="a-neg" name="A_neg" min="0" required><br><br>
-
-        <label for="b-pos">B+ Units:</label>
-        <input type="number" id="b-pos" name="B_pos" min="0" required><br><br>
-
-        <label for="b-neg">B- Units:</label>
-        <input type="number" id="b-neg" name="B_neg" min="0" required><br><br>
-
-        <label for="ab-pos">AB+ Units:</label>
-        <input type="number" id="ab-pos" name="AB_pos" min="0" required><br><br>
-
-        <label for="ab-neg">AB- Units:</label>
-        <input type="number" id="ab-neg" name="AB_neg" min="0" required><br><br>
-
-        <label for="o-pos">O+ Units:</label>
-        <input type="number" id="o-pos" name="O_pos" min="0" required><br><br>
-
-        <label for="o-neg">O- Units:</label>
-        <input type="number" id="o-neg" name="O_neg" min="0" required><br><br>
-
-        <button type="submit">Sign Up as Blood Bank</button>
-    </form>
+        <button type="submit">Register</button>
+    </form>
 
 </body>
 </html>
