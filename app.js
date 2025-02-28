@@ -18,22 +18,25 @@ app.use(session({
 
 const homeRouter = require("./routers/home");
 const findRouter = require("./routers/find");
+const loginRouter = require("./routers/login");
 const loginBankRouter = require("./routers/login_bank");
 const loginDonorRouter = require("./routers/login_donor");
 const signupBankRouter = require("./routers/signup_bank");
 const signupDonorRouter = require("./routers/signup_donor");
 const dashboardDonorRouter = require("./routers/dashboard_donor");
 const dashboardBankRouter = require("./routers/dashboard_bank");
+const registerRouter = require("./routers/register");
 
 app.use('/', homeRouter);
 app.use('/find-donor', findRouter);
-app.use('/login-bank', loginBankRouter);
 app.use('/login-donor', loginDonorRouter);
+app.use('/login-bank', loginBankRouter);
+app.use('/login', loginRouter);
 app.use('/signup-bank', signupBankRouter);
 app.use('/signup-donor', signupDonorRouter);
 app.use('/dashboard-donor', dashboardDonorRouter);
 app.use('/dashboard-bank', dashboardBankRouter);
-
+app.use('/register', registerRouter);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
